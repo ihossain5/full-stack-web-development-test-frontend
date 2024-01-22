@@ -40,6 +40,9 @@ onMounted(() => {
           <tr v-if="loading">
             <td colspan="2">Loading...</td>
           </tr>
+          <tr v-else-if="categories.length === 0">
+            <td colspan="2">Data Not Found</td>
+          </tr>
           <tr v-else v-for="(category, index) in categories" :key="category.id">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ category.name }}</td>

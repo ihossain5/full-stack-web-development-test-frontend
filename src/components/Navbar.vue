@@ -27,7 +27,7 @@ const isActive = (targetRoute) => {
         <div class="navbar-nav ms-auto">
         <router-link to="/category" class="nav-link" :class="{ 'active': isActive('/category') }" >Category</router-link>
         <router-link to="/sub-category" class="nav-link" :class="{ 'active': isActive('/sub-category') }">Sub Category</router-link>
-        <router-link to="/item" class="nav-link" :class="{ 'active': isActive('/item-category') }">Item</router-link>
+        <router-link to="/item" class="nav-link" :class="{ 'active': isActive('/item') }">Item</router-link>
         </div>
       </div>
     </div>
