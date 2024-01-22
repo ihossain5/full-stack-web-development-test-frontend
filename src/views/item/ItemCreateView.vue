@@ -44,7 +44,7 @@ const addSubCategory = async () => {
 <template>
   <div class="card">
     <div class="card-body d-flex justify-content-between">
-      <div class="card-title">Create Sub Category</div>
+      <div class="card-title">Create Item</div>
       <router-link to="/item" class="btn btn-dark">Back</router-link>
     </div>
     <div class="card-body">

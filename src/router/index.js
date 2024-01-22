@@ -6,6 +6,8 @@ import SubCategoryView from "../views/sub-category/SubCategoryView.vue";
 import SubCategoryCreateView from "../views/sub-category/SubCategoryCreateView.vue";
 import ItemView from "../views/item/ItemView.vue";
 import ItemCreateView from "../views/item/ItemCreateView.vue";
+import DiscountView from "../views/discount/DiscountView.vue";
+import DiscountCreateView from "../views/discount/DiscountCreateView.vue";
 
 const router = createRouter({
     history: createWebHistory(
@@ -43,6 +45,16 @@ const router = createRouter({
             path: "/item/create",
             name: "item-create",
             component: ItemCreateView,
+        },
+        {
+            path: "/discount",
+            name: "discount",
+            component: DiscountView,
+        },
+        {
+            path: "/discount/create",
+            name: "discount-create",
+            component: DiscountCreateView,
         },
 
     ],

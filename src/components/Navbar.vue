@@ -28,6 +28,7 @@ const isActive = (targetRoute) => {
         <router-link to="/category" class="nav-link" :class="{ 'active': isActive('/category') }" >Category</router-link>
         <router-link to="/sub-category" class="nav-link" :class="{ 'active': isActive('/sub-category') }">Sub Category</router-link>
         <router-link to="/item" class="nav-link" :class="{ 'active': isActive('/item') }">Item</router-link>
+        <router-link to="/discount" class="nav-link" :class="{ 'active': isActive('/discount') }">Discount</router-link>
         </div>
       </div>
     </div>
