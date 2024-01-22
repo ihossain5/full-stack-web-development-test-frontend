@@ -1,36 +1,48 @@
+<script setup>
+import api from "@/services/api";
+import { onMounted, ref } from "vue";
+
+const categories = ref({});
+const loading = ref(true);
+
+const fetchData = async () => {
+  try {
+    const response = await api.get("/category/all");
+    categories.value = response.data.data;
+  } catch (e) {
+    alert("Something went wrong");
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
+
+</script>
+
 <template>
   <div class="card">
     <div class="card-body d-flex justify-content-between">
       <div class="card-title">All Category</div>
-      <router-link to="/category-create" class="btn btn-primary">Add New</router-link>
+      <router-link to="/category-create" class="btn btn-primary"
+        >Add New</router-link
+      >
     </div>
     <div class="card-body">
-      <table class="table table-striped">
+      <table class="table table-striped text-center ">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
+          <th>#</th>
+          <th>Name</th>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr v-if="loading">
+            <td colspan="2">Loading...</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+          <tr v-else v-for="(category, index) in categories" :key="category.id">
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ category.name }}</td>
           </tr>
         </tbody>
       </table>
