@@ -26,7 +26,7 @@ onMounted(() => {
   <div class="card">
     <div class="card-body d-flex justify-content-between">
       <div class="card-title">All Discount</div>
-      <router-link to="/discount-create" class="btn btn-primary"
+      <router-link to="/discount/create" class="btn btn-primary"
         >Add New</router-link
       >
     </div>
@@ -48,7 +48,7 @@ onMounted(() => {
           <tr v-else v-for="(discount, index) in discounts" :key="discount.id">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ discount.discount_type }}</td>
-            <td>{{ discount.discountable_name }}</td>
+            <td>{{ discount.discountable_name ?? 'N/A' }}</td>
             <td>{{ discount.value }}</td>
           </tr>
         </tbody>

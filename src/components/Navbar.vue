@@ -11,7 +11,7 @@ const isActive = (targetRoute) => {
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">Home</router-link>
+      <router-link class="navbar-brand" to="/">Menu</router-link>
       <button
         class="navbar-toggler"
         type="button"
