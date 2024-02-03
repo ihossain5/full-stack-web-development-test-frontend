@@ -1,14 +1,18 @@
 <script setup>
+import Pagination from "@/components/Pagination.vue";
 import api from "@/services/api";
 import { onMounted, ref } from "vue";
 
 const discounts = ref({});
 const loading = ref(true);
+const currentPage = ref(1);
+const totalPages = ref(1);
 
-const fetchData = async () => {
+const fetchData = async (page = 1) => {
   try {
-    const response = await api.get("/discount/all");
-    discounts.value = response.data.data;
+    const response = await api.get(`/discount/all?page=${page}`);
+    discounts.value = response.data.data.data;
+    totalPages.value = response.data.data.meta.last_page;
   } catch (e) {
     alert("Something went wrong");
   } finally {
@@ -20,6 +24,10 @@ onMounted(() => {
   fetchData();
 });
 
+const changePage = (page) => {
+  currentPage.value = page;
+  fetchData(page);
+};
 </script>
 
 <template>
@@ -53,6 +61,11 @@ onMounted(() => {
           </tr>
         </tbody>
       </table>
+      <pagination
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        :changePage="changePage"
+      ></pagination>
     </div>
   </div>
 </template>

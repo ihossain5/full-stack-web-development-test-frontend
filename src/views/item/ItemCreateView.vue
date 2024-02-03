@@ -11,7 +11,7 @@ const name = ref("");
 const fetchData = async () => {
   try {
     const response = await api.get("/subcategory/all");
-    subcategories.value = response.data.data;
+    subcategories.value = response.data.data.data;
   } catch (e) {
     alert("Something went wrong");
   } finally {
@@ -29,7 +29,10 @@ const addSubCategory = async () => {
   }
   try {
     loading.value = true;
-    await api.post("/item/store", { name: name.value, sub_category_id:sub_category_id.value });
+    await api.post("/item/store", {
+      name: name.value,
+      sub_category_id: sub_category_id.value,
+    });
 
     name.value = "";
   } catch (error) {
@@ -69,9 +72,7 @@ const addSubCategory = async () => {
           </select>
         </div>
         <div class="mb-3">
-          <label for="categoryName" class="form-label"
-            >Item Name:</label
-          >
+          <label for="categoryName" class="form-label">Item Name:</label>
           <input
             type="text"
             id="categoryName"

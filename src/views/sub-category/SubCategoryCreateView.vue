@@ -11,7 +11,7 @@ const name = ref("");
 const fetchData = async () => {
   try {
     const response = await api.get("/category/all");
-    categories.value = response.data.data;
+    categories.value = response.data.data.data;
   } catch (e) {
     alert("Something went wrong");
   } finally {
@@ -29,7 +29,10 @@ const addSubCategory = async () => {
   }
   try {
     loading.value = true;
-    await api.post("/subcategory/store", { name: name.value, category_id:category_id.value });
+    await api.post("/subcategory/store", {
+      name: name.value,
+      category_id: category_id.value,
+    });
 
     name.value = "";
   } catch (error) {
